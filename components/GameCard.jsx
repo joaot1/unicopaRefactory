@@ -1,57 +1,42 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
-
-
+import { View, Text, StyleSheet } from 'react-native';
+import FlagIcon from './FlagIcon';
 
 export default function GameCard({ game }) {
+  return (
+    <View style={styles.jogo}>
+      
+      <Text style={styles.grupo}>
+        GRUPO {game.grupo} • {game.confronto}
+      </Text>
 
-    const flags = {
-        MEX: require('../assets/jogos/mexico.png'),
-        RSA: require('../assets/jogos/south africa.png'),
-        KOR: require('../assets/jogos/south korea.png'),
-        CZE: require('../assets/jogos/czech republic.png')
-    }
-
-    return (
-        <View style={styles.jogo}>
-
-            <Text style={styles.grupo}>
-                GRUPO {game.grupo}  {game.confronto}
-            </Text>
-
-            <View style={styles.linhaPrincipal}>
-
-                <View style={styles.time}>
-                    <Image
-                        style={styles.bandeira}
-                        source={flags[game.sigla_casa]}
-                    />
-                    <Text style={styles.sigla}>{game.sigla_casa}</Text>
-                </View>
-
-                <View style={styles.horario}>
-                    <Text style={styles.hora}>{game.hora_brasilia}</Text>
-                    <Text style={styles.subTitulo}>VS</Text>
-                </View>
-
-                <View style={styles.time}>
-                    <Text style={styles.sigla}>{game.sigla_fora}</Text>
-                    <Image
-                        style={styles.bandeira}
-                        source={flags[game.sigla_fora]}
-                    />
-                </View>
-
-            </View>
-
-            <View style={styles.local}>
-                <Text style={styles.subTitulo}>{game.estadio}</Text>
-                <Text style={styles.subTitulo}>
-                    {game.cidade} • {game.pais}
-                </Text>
-            </View>
-
+      <View style={styles.linhaPrincipal}>
+        
+        <View style={styles.time}>
+          <FlagIcon sigla={game.sigla_casa} />
+          <Text style={styles.sigla}>{game.sigla_casa}</Text>
         </View>
-    )
+
+        <View style={styles.horario}>
+          <Text style={styles.hora}>{game.hora_brasilia}</Text>
+          <Text style={styles.subTitulo}>VS</Text>
+        </View>
+
+        <View style={styles.time}>
+          <Text style={styles.sigla}>{game.sigla_fora}</Text>
+          <FlagIcon sigla={game.sigla_fora} />
+        </View>
+
+      </View>
+
+      <View style={styles.local}>
+        <Text style={styles.subTitulo}>{game.estadio}</Text>
+        <Text style={styles.subTitulo}>
+          {game.cidade} • {game.pais}
+        </Text>
+      </View>
+
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -75,11 +60,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8
-  },
-  bandeira: {
-    width: 28,
-    height: 28,
-    borderRadius: 14
   },
   sigla: {
     color: 'white',
