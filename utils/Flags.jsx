@@ -37,7 +37,7 @@ export const FLAGS = {
   IRQ: require('../assets/jogos/iraq.png'),
   NOR: require('../assets/jogos/norway.png'),
   ARG: require('../assets/jogos/argentina.png'),
-  ALG: require('../assets/jogos/algeria.png'),
+  ALG: require('../assets/jogos/Algeria.png'),
   AUT: require('../assets/jogos/austria.png'),
   JOR: require('../assets/jogos/jordan.png'),
   GHA: require('../assets/jogos/ghana.png'),

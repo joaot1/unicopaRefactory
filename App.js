@@ -1,15 +1,18 @@
-import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground, SectionList } from 'react-native';
 import GameCard from './components/GameCard';
 import dados from './assets/dados.json';
-import { SectionList } from 'react-native-web';
 
 export default function App() {
 
-  const jogos = dados.jogos
+  const jogos = dados.jogos;
+
+  const formatarData = (dataString) => {
+    const [ano, mes, dia] = dataString.split('-');
+    return `${dia}/${mes}`;
+  };
 
   const agruparPorData = (jogos) => {
     return jogos.reduce((acc, jogo) => {
-
       const data = jogo.data_brasilia;
 
       if (!acc[data]) {
@@ -18,7 +21,6 @@ export default function App() {
       acc[data].push(jogo);
 
       return acc;
-
     }, {});
   }
 
@@ -49,7 +51,7 @@ export default function App() {
         renderSectionHeader={({ section }) => (
 
           <View style={styles.card}>
-            <Text style={styles.data}>{section.title}</Text>
+            <Text style={styles.data}>{formatarData(section.title)}</Text>
             {
               section.data.map((jogo) => (
                 <GameCard key={jogo.id} game={jogo} />
