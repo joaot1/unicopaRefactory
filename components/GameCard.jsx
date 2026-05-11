@@ -3,10 +3,10 @@ import FlagIcon from './FlagIcon';
 
 export default function GameCard({ game }) {
 
-  const isBrasil = game.sigla_casa === 'BRA' || game.sigla_fora === 'BRA';
+  const oBrasil = game.sigla_casa === 'BRA' || game.sigla_fora === 'BRA';
 
   return (
-    <View style={[styles.jogo, isBrasil && styles.jogoBrasil]}>
+    <View style={[styles.jogo, oBrasil && styles.jogoBrasil]}>
       
       <Text style={styles.grupo}>
         GRUPO {game.grupo} • {game.confronto}
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   jogoBrasil: {
     backgroundColor: '#0a1e17', 
-    borderColor: '#f2cc2f',     
+    borderColor: '#287e28',     
     borderWidth: 1,
     borderRadius: 8,
     borderBottomWidth: 1,       

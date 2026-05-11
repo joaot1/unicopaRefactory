@@ -9,6 +9,7 @@ export default function App() {
   const jogos = dados.jogos;
 
   const jogosAgrupados = agruparPorData(jogos);
+  //const jogosPorHora = 
 
   const jogosTratados = Object.keys(jogosAgrupados).map(data => {
     return {

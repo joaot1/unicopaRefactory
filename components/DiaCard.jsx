@@ -2,12 +2,18 @@ import { View, Text, StyleSheet } from 'react-native';
 import GameCard from './GameCard';
 
 export default function DiaCard({ data, jogos }) {
+  
+  const jogosOrdenados = [...jogos].sort((jogoA, jogoB) => {
+    return jogoA.hora_brasilia.localeCompare(jogoB.hora_brasilia);
+  });
+
   return (
     <View style={styles.card}>
       <Text style={styles.data}>{data}</Text>
-      {jogos.map((jogo) => (
+      {jogosOrdenados.map((jogo) => (
         <GameCard key={jogo.id} game={jogo} />
       ))}
+      
     </View>
   );
 }
